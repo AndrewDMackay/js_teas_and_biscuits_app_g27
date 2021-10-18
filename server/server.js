@@ -16,6 +16,15 @@ const teas = [
 ];
 
 
+const biscuits = [
+  { name: "Digestives", brand: "McVitie's" },
+  { name: "Hobnobs", brand: "McVitie's" },
+  { name: "Shortbreads", brand: "Walkers" },
+  { name: "Jammy Dodgers", brand: "Burton's" },
+  { name: "Custard Creams", brand: "Crawford's" }
+];
+
+
 app.get('/api/teas', (req, res) => {
   res.json(teas)
 })
