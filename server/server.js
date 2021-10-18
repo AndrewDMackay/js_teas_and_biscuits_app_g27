@@ -1,6 +1,8 @@
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
+app.use(cors());
 
 const teas = [
   { name: "Early Grey", brand: "Twinings" },
@@ -10,8 +12,8 @@ const teas = [
   { name: "Green", brand: "Clipper" }
 ];
 
-app.use(cors());
 
 app.listen(5000, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
+
