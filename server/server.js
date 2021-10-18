@@ -1,8 +1,8 @@
 
 const express = require('express');
+const createRouter = require('./helpers/create_router.js')
 const app = express();
 const cors = require('cors');
-const { json } = require('express');
 app.use(cors());
 app.use(express.json());
 
@@ -25,37 +25,12 @@ const biscuits = [
 ];
 
 
-app.get('/api/teas', (req, res) => {
-  res.json(teas)
-})
+const teasRouter = createRouter(teas)
+app.use('/api/teas', teasRouter)
 
 
-app.get('/api/teas/:id', (req, res) => {
-  const id = req.params.id
-  res.json(teas[id])
-})
-
-
-app.post('/api/teas', (req, res) => {
-  const newTea = req.body
-  teas.push(newTea)
-  res.json(teas)
-})
-
-
-app.delete('/api/teas/:id', (req, res) => {
-  const id = req.params.id
-  teas.splice(id, 1)
-  res.json(teas)
-})
-
-
-app.put('/api/teas/:id', (req, res) => {
-  const id = req.params.id
-  const updatedTea = req.body
-  teas[id] = updatedTea
-  res.json(teas)
-})
+const biscuitsRouter = createRouter(biscuits)
+app.use('/api/biscuits', biscuitsRouter)
 
 
 app.listen(5000, function () {
