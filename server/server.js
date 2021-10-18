@@ -19,6 +19,12 @@ app.get('/api/teas', (req, res) => {
 })
 
 
+app.get('/api/teas/:id', (req, res) => {
+  console.log(req.params)
+})
+
+
+
 app.listen(5000, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
