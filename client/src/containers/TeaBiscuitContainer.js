@@ -1,17 +1,22 @@
+
 import { useEffect, useState } from 'react'
 import BiscuitList from '../components/BiscuitList'
 import TeaList from '../components/TeaList'
 import TeaBiscuitForm from '../components/TeaBiscuitForm'
 
+
 const TeasContainer = () => {
+
 
   const [teas, setTeas] = useState([])
   const [biscuits, setBiscuits] = useState([])
+
 
   useEffect(() => {
     fetchTeas()
     fetchBiscuits()
   }, [])
+
 
   const fetchTeas = () => {
     fetch('http://localhost:5000/api/teas')
@@ -19,11 +24,13 @@ const TeasContainer = () => {
       .then(teas => setTeas(teas));
   }
 
+
   const fetchBiscuits = () => {
     fetch('http://localhost:5000/api/biscuits')
       .then(response => response.json())
       .then(biscuits => setBiscuits(biscuits));
   }
+
 
   const handleTeaSubmit = newTea => {
     fetch('http://localhost:5000/api/teas', {
@@ -34,6 +41,7 @@ const TeasContainer = () => {
       .then(() => fetchTeas())
   }
 
+  
   const handleBiscuitSubmit = newBiscuit => {
     fetch('http://localhost:5000/api/biscuits', {
       method: 'POST',
@@ -42,6 +50,7 @@ const TeasContainer = () => {
     })
       .then(() => fetchBiscuits())
   }
+
 
   return (
     <>
@@ -54,6 +63,7 @@ const TeasContainer = () => {
     </>
   )
 }
+
 
 export default TeasContainer
 
